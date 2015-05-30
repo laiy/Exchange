@@ -29,6 +29,8 @@ inviteRoute = require './routes/invite.coffee'
 listRoute = require './routes/list.coffee'
 usrRoute = require './routes/usr.coffee'
 wishRoute = require './routes/wish.coffee'
+createRoute = require './routes/create.coffee'
+invitationRoute = require './routes/invitation.coffee'
 
 ###
 * create a application using MVC frame 'Express'
@@ -63,13 +65,15 @@ app.set 'view engine', 'jade'
 ###
 * use routes' handler
 ###
-app.use '/Register', registerRoute
+app.use '/signup', registerRoute
 app.use '/Log', logRoute
 app.use '/', indexRoute
 app.use '/invite', inviteRoute
 app.use '/list', listRoute
-app.use '/usr', usrRoute
+app.use '/user', usrRoute
 app.use '/wish', wishRoute
+app.use '/create', createRoute
+app.use '/invitation', invitationRoute
 
 ###
 * init database
