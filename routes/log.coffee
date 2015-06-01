@@ -15,17 +15,12 @@ util = require '../common/util.coffee'
 * @param password: password of the user
 ###
 router.post '/session', checkUserConflict, (req, res)->
-    {username, password} = req.body
-    UserModel.findOne {username}, (err, user)->
+    {idCard} = req.body
+    UserModel.findOne {idCard: idCard}, (err, user)->
         if err
             return res.status(500).send 'Server Error.'
-        else if username is '' or password is ''
-            return res.json {result: 'fail', msg: 'Info not complete.'}
         if not user
             return res.status(404).json {result: 'fail', msg: 'User is not found.'}
-        if user.password isnt util.encrypt password
-            return res.status(400).json {result: 'fail', msg: 'Password is not correct.'}
-        req.session.status = user.status
         req.session.user = user.toJSON()
         res.json {result: 'success'}
 
