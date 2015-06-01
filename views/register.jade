@@ -3,10 +3,36 @@ html
     head
         title register
         script(src='./lib/jquery.js')
+        script(src='./lib/bootstrap/js/bootstrap.min.js')
+        link(href='./lib/bootstrap/css/bootstrap.min.css' rel='stylesheet')
         link(href='/bin/css/register.css' rel='stylesheet')
         script(src='./bin/js/register.js')
+<<<<<<< HEAD
     body
         input(type='text' id='username' placeholder='username')
         input(type='password' id='password' placeholder='password')
         input(type='text' id='email' placeholder='email')
         button(type='button') SIGN UP
+=======
+body
+    .center-self.center-block
+        form(action='/register', method='POST')
+            .form-group
+                label(for='InputName') Name
+                input#InputName.form-control(type='text', placeholder='Enter name')
+            .form-group
+                label(for='InputPassword') idCard
+                input#InputPassword.form-control(type='text', placeholder='Enter idCard')
+            .form-group
+                label(for='InputLocation') loc
+                input#InputLocation.form-control(type='text', placeholder='Enter Location')
+            .form-group
+                label(for='InputEmail') Email address
+                input#InputEmail.form-control(type='email', placeholder='Enter Email')
+            .form-group
+                label(for='InputPassword') Password
+                input#InputPassword.form-control(type='password', placeholder='Password')
+
+        button.btn.btn-default(type='submit') Signup
+
+>>>>>>> upstream/master
