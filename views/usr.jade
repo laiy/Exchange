@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        title register
+        script(src='./lib/jquery.js')
+        link(href='./lib/bootstrap/css/bootstrap.min.css' rel='stylesheet')
+        link(href='/bin/css/register.css' rel='stylesheet')
+        script(src='./bin/js/register.js')
+body
+      .center-block
+          form
+              .form-group
+                label(for='InputEmail1') Email address
+                input#InputEmail1.form-control(type='email', placeholder='Enter name')
+              .form-group
+                label(for='InputPassword1') Password
+                input#InputPassword1.form-control(type='password', placeholder='Enter idCard')
+             .form-group
+                label(for='InputEmail1') Email address
+                input#InputEmail1.form-control(type='email', placeholder='Enter email')
+              .form-group
+                label(for='InputPassword1') Password
+                input#InputPassword1.form-control(type='password', placeholder='Password')
+              
+              button.btn.btn-default(type='submit') Submit
