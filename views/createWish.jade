@@ -1,0 +1,37 @@
+doctype html
+html
+    head
+        title Create
+        link(href='../lib/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+        script(src='../lib/bootstrap/js/bootstrap.min.js')
+        script(src='../lib/jquery.js')
+        link(href='../bin/css/createWish.css' rel='stylesheet')
+        script(src='../bin/js/createWish.js')
+    body
+        div.link
+            a(href='/') 首页
+            br
+            a(href='/usr') 个人页面
+            br
+            a(href='/') 退出
+
+        div.userInfo
+            p user.username
+
+        form.wishInfo(method="POST")
+            主题
+            input(type='text' id='title' placeholder='Title') 
+            br
+            开始时间
+            input(type='text' id='stt' placeholder='Start time') 
+            br
+            结束时间
+            input(type='text' id='ddl' placeholder='Finish time') 
+            br
+            面向对象
+            input(type='text' id='loc' placeholder='Object oriented')
+            br
+            描述
+            input(type='text' id='desc' placeholder='Description')
+            br
+            button(type='submit') 发布

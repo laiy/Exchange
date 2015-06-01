@@ -1,0 +1,39 @@
+doctype html
+html
+    head
+        title Wish
+        link(href='../lib/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+        script(src='../lib/bootstrap/js/bootstrap.min.js')
+        script(src='./lib/jquery.js')
+        link(href='/bin/css/wish.css' rel='stylesheet')
+        script(src='./bin/js/wish.js')
+    body
+
+        div.link
+            a(href='/') 首页
+            br
+            a(href='/usr') 个人页面
+            br
+            a(href='/') 退出
+
+        div.userInfo
+            p user.userName
+
+        div.wishes
+                p 主题:
+                    span wish.theme
+                p 实现时间: 
+                    span wish.stt ~  wish.ddl
+                p 状态: 
+                    span wish.status
+                p 描述:
+                    span  wish.desc
+
+        div.operator
+                //if ivuser.userName == wish.publisher
+                button(type="submit") 编辑
+                button(type="submit") 删除
+                br
+                //else
+                button(type="submit") 点赞
+                button(type="submit") 私信
