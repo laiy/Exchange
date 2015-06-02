@@ -1,0 +1,23 @@
+body {
+  background-image: url(../../assets/img/user/bg.jpg); }
+  body #mainbox #daohang {
+    margin-top: 1%;
+    overflow: auto; }
+    body #mainbox #daohang .nav {
+      margin-right: 10%;
+      float: right; }
+  body #mainbox #invitation {
+    margin-top: 5%;
+    width: 80%;
+    margin-left: 10%; }
+    body #mainbox #invitation .from {
+      margin-left: 80%; }
+  body #mainbox #choose-wishes .panel-footer {
+    overflow: auto; }
+    body #mainbox #choose-wishes .panel-footer .agree {
+      float: right; }
+    body #mainbox #choose-wishes .panel-footer .disagree {
+      float: right;
+      margin-right: 10%; }
+
+/*# sourceMappingURL=invitation.css.map */

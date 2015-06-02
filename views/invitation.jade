@@ -1,0 +1,54 @@
+doctype html
+html
+    head
+        title invitation
+        
+        link(href='/bin/css/invitation.css' rel='stylesheet')
+        link(href='.././lib/bootstrap/css/bootstrap.css' rel='stylesheet')
+        script(src='.././lib/jquery.js')
+        script(src='.././lib/bootstrap/js/bootstrap.js')
+        script(src='.././lib/bootstrap/js/bootstrap-wysiwyg.js')
+        //- script(src='./bin/js/invite.js')
+    body
+        #mainbox
+          #daohang
+            ul.nav.nav-pills
+              li(role="presentation" class="active")
+                a(href="#") 首页
+              li(role="presentation")
+                a(href="#") 我的主页
+          #invitation
+              div.panel.panel-info
+                div.panel-heading invitation
+                div.panel-footer
+                  div.caption
+                    h4 亲爱的小吃货
+                    p 
+                    |我想帮你实现  
+                    a(href="#")一起跑内环  
+                    |的愿望，愿望交换~你快来选择我的一个愿望来实现吧~
+                  div.from
+                    p
+                    |from:
+                    a(href="#")海绵宝宝
+                
+                #choose-wishes
+                  div.panel.panel-primary
+                    div.panel-heading invite
+                    div.panel-footer
+                     
+                      p 备注:请选一起跑内环
+                      //- p 我有三个愿望要实现  
+                      //-   input(type="checkbox") 
+                      //-   p 想去珠海看看，求同学带路～请吃饭
+                      //-   //- input(type="checkbox") 
+                      //-   //-   p 跑内环求约
+                      //-   //- input(type="checkbox") 
+                      //-   //-   p 你若教我不挂高数，我便为你送饭一个月
+
+                      button.agree(type="button" class="btn btn-primary") 接受
+                      button.disagree(type="button" class="btn btn-danger") 拒绝
+
+                        
+                        
+

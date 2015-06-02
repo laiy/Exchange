@@ -1,0 +1,23 @@
+body {
+  background-image: url(../../assets/img/user/bg.jpg); }
+  body #mainbox #daohang {
+    margin-top: 1%;
+    overflow: auto; }
+    body #mainbox #daohang .nav {
+      margin-right: 10%;
+      float: right; }
+  body #mainbox #exchange {
+    margin-top: 5%;
+    width: 80%;
+    margin-left: 10%; }
+    body #mainbox #exchange #ex {
+      height: 60%;
+      width: 60%;
+      margin-top: 30%;
+      margin-left: 15%; }
+  body #mainbox #invite .panel-footer {
+    overflow: auto; }
+    body #mainbox #invite .panel-footer .send {
+      float: right; }
+
+/*# sourceMappingURL=invite.css.map */
