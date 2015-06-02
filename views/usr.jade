@@ -3,23 +3,25 @@ html
     head
         title register
         script(src='./lib/jquery.js')
+        script(src='./lib/bootstrap/js/bootstrap.min.js')
+        // link(href='http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css', rel='stylesheet')
         link(href='./lib/bootstrap/css/bootstrap.min.css' rel='stylesheet')
-        link(href='/bin/css/register.css' rel='stylesheet')
-        script(src='./bin/js/register.js')
+        link(href='/bin/css/usr.css' rel='stylesheet')
+        script(src='./bin/js/usr.js')
 body
-      .center-block
-          form
-              .form-group
-                label(for='InputEmail1') Email address
-                input#InputEmail1.form-control(type='email', placeholder='Enter name')
-              .form-group
-                label(for='InputPassword1') Password
-                input#InputPassword1.form-control(type='password', placeholder='Enter idCard')
-             .form-group
-                label(for='InputEmail1') Email address
-                input#InputEmail1.form-control(type='email', placeholder='Enter email')
-              .form-group
-                label(for='InputPassword1') Password
-                input#InputPassword1.form-control(type='password', placeholder='Password')
-              
-              button.btn.btn-default(type='submit') Submit
+  #modify.wrapper
+      .info-card
+        i.icon-pencil-squared.modify-btn
+        |         
+        .info-wrapper
+          .avatar-round
+            input#avatarupload(type='file', name='')
+            |             
+            .card-avatar
+          |           
+          .info-detail
+            input#nickname(type='text', value='哆啦A梦')
+            |             
+            input#mood(type='text', placeholder='他比较懒，没有介绍自己')
+          button.btn.btn-primary.login-button.auth.center-block(type='submit') 关注
+

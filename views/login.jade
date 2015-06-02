@@ -3,10 +3,27 @@ html
     head
         title login
         script(src='./lib/jquery.js')
+
+        script(src='./lib/bootstrap/js/bootstrap.min.js')
+        // link(href='http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css', rel='stylesheet')
+        link(href='./lib/bootstrap/css/bootstrap.min.css' rel='stylesheet')
         link(href='/bin/css/login.css' rel='stylesheet')
         script(src='./bin/js/login.js')
+
     body
-        input(type='text' id='username' placeholder='username')
-        input(type='password' id='password' placeholder='password')
-        input(type='text' id='email' placeholder='email')
-        button(type='button') SIGN UP
+        #modify.wrapper
+            .blank
+            .info-card.clearfix
+                p Login
+                .center-self.center-block.clearfix
+                    form(action='/register', method='POST')
+                        .form-group
+                            label(for='InputEmail') Email address
+                            input#InputEmail.form-control(type='email', placeholder='Enter Email')
+                        .form-group
+                            label(for='InputPassword') Password
+                            input#InputPassword.form-control(type='password', placeholder='Password')
+
+                    a(href='/register' role="button").btn.btn-default.pull-right Sign up
+
+                    button.btn.btn-success.pull-right(type='submit') login
