@@ -15,24 +15,27 @@ html
             a.col-md-4.btn.btn-link(href='/usr') 个人页面
             a.col-md-4.btn.btn-link(href='/') 退出
 
-        div.userInfo
-            p user.userName
+        div .container
+            p.title wish
 
-        div.wishes
-                p 主题:
-                    span wish.theme
-                p 实现时间: 
-                    span wish.stt ~  wish.ddl
-                p 状态: 
-                    span wish.status
-                p 描述:
-                    span  wish.desc
+            div.userInfo
+               p user.userName
 
-        div.operator
+            div.wishes
+                   p 主题:
+                       span wish.theme
+                   p 实现时间: 
+                       span wish.stt ~  wish.ddl
+                   p 状态: 
+                       span wish.status
+                   p 描述:
+                       span  wish.desc
+
+            div.operator
                 //if ivuser.userName == wish.publisher
-                button(type="submit") 编辑
-                button(type="submit") 删除
+                button.btn.btn-success (type="submit") 编辑
+                button.btn.btn-success (type="submit") 删除
                 br
                 //else
-                button(type="submit") 点赞
-                button(type="submit") 私信
+                button.btn.btn-success (type="submit") 点赞
+                button.btn.btn-success (type="submit") 私信
