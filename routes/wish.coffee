@@ -27,6 +27,6 @@ router.post '/', (req, res)->
             return res.status(404).json {result: 'fail', msg: 'Wish is not found.'}
         else
             if appr is 0
-                # todo
+                return json {result: 'fail', msg: 'todo'}
 
 module.exports = router
