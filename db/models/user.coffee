@@ -1,82 +1,53 @@
-mongoose = require 'mongoose'
+mongoose = require('mongoose')
 Schema = mongoose.Schema
 ObjectId = Schema.Types.ObjectId
-util = require '../../common/util.coffee'
+util = require('../../common/util.coffee')
 
 UserSchema = new Schema
-    username: String
-    password: String
-    email: String
-    idCard: String
-    loc: String
+    email      : {type: String, required: true},
+    password   : {type: String, required: true},
+    name       : String,
+    idCard     : String,
+    loc        : String,
+    fans       : [ObjectId],
+    following  : [ObjectId]
 
-UserModel = mongoose.model 'UserModel', UserSchema
+UserModel = mongoose.model('UserModel', UserSchema)
 
-###
-* if not admin existed, then create a new administrator
-* @param callback: the callback function that would execute when function ended
-###
-UserModel.createAdministrator = (callback)->
-    callback = callback or ->
-    UserModel.findOne { status: 'admin' }, (err, admin)->
-        if not admin
-            UserModel.create
-                username: 'admin'
-                password: util.encrypt 'miac-website'
-                email: 'ly.franky@gmail.com'
-            , callback
-        else
-            callback()
-
-###
-* create a user in UserModel with username, password and email
-* @param username: the user's name(one and only)
-* @param password: the user's password, should be encrypted before saving
-* @param email: the user's email
-* @param callback: the callback function that would execute when function ended
-###
-UserModel.createUser = (username, password, email, callback)->
+UserModel.createUser = (name, idCard, loc, email, password, callback)->
     UserModel.create
-        username: username
-        password: util.encrypt password
-        email: email
+        name        : name,
+        password    : util.enctype(password),
+        idCard      : idCard,
+        loc         : loc,
+        email       : email,
+        fans        : [],
+        following   : []
     , callback
 
-###
-* update email of user
-* find a user by userId and update email
-* @param email: the email that would replace the old one
-* @param userId: the user's id to update email
-* @param callback: the callback function that would execute when function ended
-###
-UserModel.updateEmail = (email, userId, callback)->
-    UserModel.findOne { _id: userId }, (err, user)->
-        if user
-            user.email = email
-            user.save ->
-                callback()
+UserModel.fo = (uid1, uid2, callback)->
+    UserModel.findOne { _id: uid1 }, (err, user1)->
+        if user1
+            UserModel.findOne { _id: uid2 }, (err, user2)->
+                if (user2)
+                    user1.following.unshift(uid2)
+                    user2.fans.unshift(uid1)
+                    user1.save ->
+                        user2.save ->
+                            callback()
+            callback()
 
-###
-* update password of user
-* find a user by userId and update password
-* @param password: the password that would replace the old one
-* @param userId: the user's id to update password
-* @param callback: the callback function that would execute when function ended
-###
-UserModel.updatePassword = (password, userId, callback)->
-    UserModel.findOne { _id: userId }, (err, user)->
-        if user
-            user.password = password
-            user.save ->
-                callback()
-
-###
-* drop all the user in UserModel
-* @param callback: the callback function that would execute when function ended
-###
-UserModel.drop = (callback)->
-    UserModel.remove {}, ->
-        callback()
+UserModel.unfo = (uid1, uid2, callback)->
+    UserModel.findOne { _id: uid1 }, (err, user1)->
+        if user1
+            UserModel.findOne { _id: uid2 }, (err, user2)->
+                if user2
+                    user1.following.remove(user1.following.indexOf(uid2))
+                    user2.fans.remove(user2.fans.indexOf(uid1))
+                    user1.save ->
+                        user2.save ->
+                            callback()
+            callback()
 
 module.exports = UserModel
 

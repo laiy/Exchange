@@ -1,0 +1,40 @@
+doctype html
+html
+    head
+        title Create
+        link(href='../lib/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+        script(src='../lib/bootstrap/js/bootstrap.min.js')
+        script(src='../lib/jquery.js')
+        link(href='../bin/css/create.css' rel='stylesheet')
+        script(src='../bin/js/create.js')
+
+    body
+        div.link.btn-group.navbars.navbar-inverse.navbar-right
+            a.col-md-4.btn.btn-link(href='/') 首页
+            a.col-md-4.btn.btn-link(href='/usr') 个人页面
+            a.col-md-4.btn.btn-link(href='/') 退出
+
+        div.container.well.well-lg
+            div.userInfo
+                p user.username
+                
+            p Create wish
+
+            form.wishInfo(method="POST" role="form")
+                div.form-group
+                    label(for="title") 主题
+                    input.form-control(type='text' id='title' placeholder='Title') 
+                div.form-group
+                    label(for="stt") 开始时间
+                    input.form-control(type='text' id='stt' placeholder='Start time') 
+                div.form-group
+                    label(for="ddl") 结束时间
+                    input.form-control(type='text' id='ddl' placeholder='Finish time') 
+                div.form-group
+                    label(for="loc")面向对象
+                    input.form-control(type='text' id='loc' placeholder='Object oriented')
+                div.form-group
+                    label(for="desc") 描述
+                    textarea.form-control(type='text' id='desc' placeholder='Description' rows="3")
+                button.btn.btn-success(type='submit') 发布
+                button.btn.btn-default(type='submit') 取消
