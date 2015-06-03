@@ -1,3 +1,4 @@
+express = require 'express'
 router = express.Router()
 InviteModel = require '../db/models/invite.coffee'
 
