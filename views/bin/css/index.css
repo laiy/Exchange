@@ -37,7 +37,7 @@ a:hover {
   flex-direction: column;
   width: 290px;
   min-height: 0;
-  background: #fff;
+  background: white;
   padding: 0;
   border: none;
   border-radius: 0.2857rem;
@@ -149,5 +149,3 @@ img.ui.image {
 @media screen and (max-width: 900px) {
   .cjs-row {
     display: block; } }
-
-/*# sourceMappingURL=index.css.map */
