@@ -9,11 +9,19 @@ html
         script(src='./bin/js/wish.js')
 
     body
-
-        div.link.btn-group.navbars.navbar-inverse.navbar-right
-            a.col-md-4.btn.btn-link(href='/') 首页
-            a.col-md-4.btn.btn-link(href='/usr') 个人页面
-            a.col-md-4.btn.btn-link(href='/') 退出
+    
+        nav.navbar.nav-background.navbar-default
+            div.container-fluid
+                div.userInfo.navbar-header.navbar-left
+                    span.navbar-brand user.username
+    
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a.col-md-4.btn.btn-link(href='/') 首页
+                    li
+                        a.col-md-4.btn.btn-link(href='/usr') 个人页面
+                    li
+                        a.col-md-4.btn.btn-link(href='/') 退出
 
         div .container
             p.title wish

@@ -9,3 +9,9 @@ p.title {
 
 button {
   margin: auto 8px auto 0; }
+
+div.container {
+  margin: 5% auto; }
+
+nav.nav-background {
+  background-color: rgba(248, 248, 248, 0.85); }
