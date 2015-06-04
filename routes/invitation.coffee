@@ -1,12 +1,14 @@
 express = require 'express'
 router = express.Router()
 InviteModel = require '../db/models/invite.coffee'
+mockData = require '../test/mock-data.coffee'
 
 ###
 * render 'invitation' when get '/invitation'
 ###
-router.get '/', (req, res)->
-    {iid} = req.body
+router.get '/:id', (req, res)->
+    iid = mongoose.Types.ObjectId req.params.id
+    res.render 'invitation', invite: mockData.invite
     InviteModel.findOne {iid: iid}, (err, invite)->
         if err
             return res.status(500).send 'Server Error.'

@@ -1,12 +1,14 @@
 express = require 'express'
 router = express.Router()
 WishModel = require '../db/models/wish.coffee'
+mockData = require '../test/mock-data.coffee'
 
 ###
 * render 'wish' when get '/wish'
 ###
-router.get '/', (req, res)->
-    {wid} = req.body
+router.get '/:id', (req, res)->
+    res.render 'wish', wish: mockData.wish
+    wid = mongoose.Types.ObjectId req.params.id
     WishModel.findOne {wid: wid}, (err, wish)->
         if err
             return res.status(500).send 'Server Error.'

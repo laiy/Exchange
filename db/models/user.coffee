@@ -5,7 +5,6 @@ util = require('../../common/util.coffee')
 
 UserSchema = new Schema
     email      : {type: String, required: true},
-    password   : {type: String, required: true},
     name       : String,
     idCard     : String,
     loc        : String,
@@ -14,10 +13,9 @@ UserSchema = new Schema
 
 UserModel = mongoose.model('UserModel', UserSchema)
 
-UserModel.createUser = (name, idCard, loc, email, password, callback)->
+UserModel.createUser = (name, idCard, loc, email, callback)->
     UserModel.create
         name        : name,
-        password    : util.enctype(password),
         idCard      : idCard,
         loc         : loc,
         email       : email,
