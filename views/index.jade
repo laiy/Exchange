@@ -22,7 +22,7 @@ html
               |         
               span.icon-bar
             |       
-            a.navbar-brand(href='#') Exchange
+            a.navbar-brand(href='/') Exchange
 
             form.navbar-form.navbar-left(role='search')
               .form-group
@@ -40,123 +40,38 @@ html
               li
                 a(href='#') 最热门    
 
-            // 如果没有登陆
-            ul.nav.navbar-nav.navbar-right
-              li
-                a(href='/log') 登陆
-              |         
-              li
-                a(href='/signup') 注册
-
-            // 如果登陆按钮增加显示为  创建心愿 退出 (参照上面的样式写)
-
+            if user 
+             ul.nav.navbar-nav.navbar-right
+               li
+                 a(href='/') 首页
+               |         
+               li
+                 a(href='/user'+user.idCard) 我的主页
+            else 
+              ul.nav.navbar-nav.navbar-right
+               li
+                 a(href='/log') 登陆
+               |         
+               li
+                 a(href='/signup') 注册
 
     div.center-block
-
-      div(style="margin:50px")
-      div.wrapper-self
-        div.cjs-row
-          div.cjs-cell
-            a.ui.card(href='/usr')
-              .content
-                .header Cute Dog
-                .meta
-                  span.category 2015-07-28  to 2015-07-30
-                .description
-                  p I am the wish to describe. 英国每日电讯 Athletes have not always run anti-clockwise历史上，田径的方向，顺时针和逆时针都是有的。19 世纪的田径比赛经常出现顺时针。1896 年雅典奥运会与 1900 年巴黎奥运会都是顺时针。1908 年后奥运会采用逆时针，沿用至今
-              .extra.content
-                .right.floated.author
-                  img.ui.avatar.image(src='/src/img/avatar.jpg')
-                  |  Matt
-
-          div.cjs-cell
-            a.ui.card(href='/usr')
-              .content
-                .header Cute Dog
-                .meta
-                  span.category 2015-07-28  to 2015-07-30
-                .description
-                  p I am the wish to describe. 英国每日电讯 Athletes have not always run anti-clockwise历史上，田径的方向，顺时针和逆时针都是有的。19 世纪的田径比赛经常出现顺时针。1896 年雅典奥运会与 1900 年巴黎奥运会都是顺时针。1908 年后奥运会采用逆时针，沿用至今
-              .extra.content
-                .right.floated.author
-                  img.ui.avatar.image(src='/src/img/avatar.jpg')
-                  |  Matt
-
-          div.cjs-cell
-            a.ui.card(href='/usr')
-              .content
-                .header Cute Dog
-                .meta
-                  span.category 2015-07-28  to 2015-07-30
-                .description
-                  p I am the wish to describe. 英国每日电讯 Athletes have not always run anti-clockwise历史上，田径的方向，顺时针和逆时针都是有的。19 世纪的田径比赛经常出现顺时针。1896 年雅典奥运会与 1900 年巴黎奥运会都是顺时针。1908 年后奥运会采用逆时针，沿用至今
-              .extra.content
-                .right.floated.author
-                  img.ui.avatar.image(src='/src/img/avatar.jpg')
-                  |  Matt
-
-          div.cjs-cell
-            a.ui.card(href='/usr')
-              .content
-                .header Cute Dog
-                .meta
-                  span.category 2015-07-28  to 2015-07-30
-                .description
-                  p I am the wish to describe. 英国每日电讯 Athletes have not always run anti-clockwise历史上，田径的方向，顺时针和逆时针都是有的。19 世纪的田径比赛经常出现顺时针。1896 年雅典奥运会与 1900 年巴黎奥运会都是顺时针。1908 年后奥运会采用逆时针，沿用至今
-              .extra.content
-                .right.floated.author
-                  img.ui.avatar.image(src='/src/img/avatar.jpg')
-                  |  Matt
-
-        div.cjs-row
-          div.cjs-cell
-            a.ui.card(href='/usr')
-              .content
-                .header Cute Dog
-                .meta
-                  span.category 2015-07-28  to 2015-07-30
-                .description
-                  p I am the wish to describe. 英国每日电讯 Athletes have not always run anti-clockwise历史上，田径的方向，顺时针和逆时针都是有的。19 世纪的田径比赛经常出现顺时针。1896 年雅典奥运会与 1900 年巴黎奥运会都是顺时针。1908 年后奥运会采用逆时针，沿用至今
-              .extra.content
-                .right.floated.author
-                  img.ui.avatar.image(src='/src/img/avatar.jpg')
-                  |  Matt
-
-          div.cjs-cell
-            a.ui.card(href='/usr')
-              .content
-                .header Cute Dog
-                .meta
-                  span.category 2015-07-28  to 2015-07-30
-                .description
-                  p I am the wish to describe. 英国每日电讯 Athletes have not always run anti-clockwise历史上，田径的方向，顺时针和逆时针都是有的。19 世纪的田径比赛经常出现顺时针。1896 年雅典奥运会与 1900 年巴黎奥运会都是顺时针。1908 年后奥运会采用逆时针，沿用至今
-              .extra.content
-                .right.floated.author
-                  img.ui.avatar.image(src='/src/img/avatar.jpg')
-                  |  Matt
-
-          div.cjs-cell
-            a.ui.card(href='/usr')
-              .content
-                .header Cute Dog
-                .meta
-                  span.category 2015-07-28  to 2015-07-30
-                .description
-                  p I am the wish to describe. 英国每日电讯 Athletes have not always run anti-clockwise历史上，田径的方向，顺时针和逆时针都是有的。19 世纪的田径比赛经常出现顺时针。1896 年雅典奥运会与 1900 年巴黎奥运会都是顺时针。1908 年后奥运会采用逆时针，沿用至今
-              .extra.content
-                .right.floated.author
-                  img.ui.avatar.image(src='/src/img/avatar.jpg')
-                  |  Matt
-
-          div.cjs-cell
-            a.ui.card(href='/usr')
-              .content
-                .header Cute Dog
-                .meta
-                  span.category 2015-07-28  to 2015-07-30
-                .description
-                  p I am the wish to describe. 英国每日电讯 Athletes have not always run anti-clockwise历史上，田径的方向，顺时针和逆时针都是有的。19 世纪的田径比赛经常出现顺时针。1896 年雅典奥运会与 1900 年巴黎奥运会都是顺时针。1908 年后奥运会采用逆时针，沿用至今
-              .extra.content
-                .right.floated.author
-                  img.ui.avatar.image(src='/src/img/avatar.jpg')
-                  |  Matt
+      if wishes
+        div(style="margin:50px")
+          div.wrapper-self
+            - for (var i=0; i<wishes.length; i=j)
+              div.cjs-row
+                - for (var j = i; j < wishes.length && j < i+3; j++)
+                  div.cjs-cell
+                    a.ui.card(href='/wish' + wishes[j].uid)
+                      .content
+                        .header=wishes[j].title
+                        .meta
+                          span.category=moment(wishes[j].stt).format('MMM D,YY')
+                          span.category=moment(wishes[j].ddl).format('MMM D,YY')
+                        .description
+                          p=wishes[j].desc
+                      .extra.content
+                        .right.floated.author
+                          img.ui.avatar.image(src='/src/img/avatar.jpg')
+                          |  Matt

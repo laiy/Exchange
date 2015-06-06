@@ -1,53 +1,51 @@
 doctype html
 html
-	head
-		title Exchange
-		link(href='/bin/css/bootstrap.min.css', rel='stylesheet')
-		script(src='/bin/js/jquery-2.1.4.min.js')
-		script(src='/bin/js/bootstrap.min.js')
-	body
-		nav.navbar.navbar-default(role='navigation')
-			a.navbar-brand(href='/') Exchange
-			div
-				form.navbar-form.navbar-right
-					span(style='margin:5px')
-					a(href='/') 首页
-					span(style='margin:5px')
-					a(href='/user') 我的主页
+  head
+    title Exchange
+    link(href='/bin/css/bootstrap.min.css', rel='stylesheet')
+    script(src='/bin/js/jquery-2.1.4.min.js')
+    script(src='/bin/js/bootstrap.min.js')
 
-		div
-			div.page-header
-				h1
-					.small 关注列表
-			div.col-sm-3.col-md-1
-				a(href='/user')
-					div.thumbnail
-							img(src='src/img/user.png')
-						div.caption
-							h3 小明
+    link(href='/bin/css/list.css' rel='stylesheet')
+    script(src='./bin/js/js/list.js')
+  body
+     nav.navbar.navbar-default.background-self
+      .container-fluid
+          // Brand and toggle get grouped for better mobile display
+          .navbar-header
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+              span.sr-only Toggle navigation
+              |         
+              span.icon-bar
+              |         
+              span.icon-bar
+              |         
+              span.icon-bar
+            |       
+            a.navbar-brand(href='/') Exchange
+              span.zyh  关注列表
 
-			div.col-sm-3.col-md-1
-				a(href='/user')
-					div.thumbnail
-							img(src='src/img/user.png')
-						div.caption
-							h3 小明
+          // Collect the nav links, forms, and other content for toggling
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            ul.nav.navbar-nav
+            if user 
+             ul.nav.navbar-nav.navbar-right
+               li
+                 a(href='/') 首页
+               |         
+               li
+                 a(href='/user'+user.idCard) 我的主页
 
-			div.col-sm-3.col-md-1
-				a(href='/user')
-					div.thumbnail
-							img(src='src/img/user.png')
-						div.caption
-							h3 小明
-
-			div.col-sm-3.col-md-1
-				a(href='/user')
-					div.thumbnail
-							img(src='src/img/user.png')
-						div.caption
-							h3 小明
-
-
-
-
-				
+    div.center-block
+      if usr
+        div(style="margin:50px")
+          div.wrapper-self
+            - for (var i=0; i < usr.fans.length; i=j)
+              div.cjs-row
+                - for (var j = i; j < 11 && j < i+5; j++)
+                  div.cjs-cell
+                    a.ui.card(href='/user' + usr.fans[j].idCard)
+                      .extra.content
+                        .right.floated.author
+                          img.ui.avatar.image(src='/src/img/avatar.jpg')
+                          .div(style="margin-left:30px") usr.fans[j].name
