@@ -6,9 +6,14 @@ html
         script(src='./lib/bootstrap/js/bootstrap.min.js')
         // link(href='http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css', rel='stylesheet')
         link(href='./lib/bootstrap/css/bootstrap.min.css' rel='stylesheet')
+
+        
+
+
         link(href='/bin/css/usr.css' rel='stylesheet')
         script(src='./bin/js/usr.js')
 body
+
   #modify.wrapper
       .info-card
         i.icon-pencil-squared.modify-btn
@@ -20,9 +25,21 @@ body
             .card-avatar
           |           
           .info-detail
-            input#nickname(type='text', value='哆啦A梦')
-            |             
-            input#mood(type='text', placeholder='他比较懒，没有介绍自己')
+            if user
+              a(href='/' role="button").btn.btn-primary.login-button.auth.center-block Home
 
-            button.btn.btn-primary.login-button.auth.center-block(type='submit') 关注
+            else  
+              form(action='/user', method='POST')
+                input#nickname(type='text', value='#{usr.name}', disabled='true')            
+                input#mood(type='text', placeholder='#{usr.email}', disabled)
+                input#fo(type='hidden', name='op', value='fo')
+                input#uid(type='hidden', name='uid', value='#{usr.idCard}')
+                button.btn.btn-primary.login-button.auth.center-block(type='submit') 关注
+              a(href='/' role="button").cjs-width.btn.btn-primary.login-button.center-block Home
+            //- else
+            //-   form(action='/signup', method='POST')
+            //-     input#nickname(type='text', value='#{usr.name}', disabled='true')
+            //-     |             
+            //-     input#mood(type='text', placeholder='#{usr.email}', disabled)
 
+            //-     button.btn.btn-primary.login-button.auth.center-block(type='') 修改资料

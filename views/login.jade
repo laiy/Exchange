@@ -16,14 +16,11 @@ html
             .info-card.clearfix
                 p Login
                 .center-self.center-block.clearfix
-                    form(action='/register', method='POST')
+                    form(action='/log/session', method='POST')
                         .form-group
-                            label(for='InputEmail') Email address
-                            input#InputEmail.form-control(type='email', placeholder='Enter Email')
-                        .form-group
-                            label(for='InputPassword') Password
-                            input#InputPassword.form-control(type='password', placeholder='Password')
+                            label(for='InputIdCard') idCard
+                            input#InputIdCard.form-control(name='idCard' type='text', placeholder='Enter idCard')
 
-                    a(href='/register' role="button").btn.btn-default.pull-right Sign up
+                        a(href='/signup' role="button").btn.btn-default.pull-right Register
 
-                    button.btn.btn-success.pull-right(type='submit') login
+                        button.btn.btn-success.pull-right(type='submit') login
