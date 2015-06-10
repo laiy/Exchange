@@ -15,7 +15,11 @@ router.get '/:id', (req, res)->
         else if not user
             res.json {result: 'fail', msg: 'User not found.'}
         else
-            res.render 'usr', usr: user
+            isFan = false
+            for fan in user.fans
+                if fan is req.session.user._id
+                    isFan = true
+            res.render 'usr', usr: user, isFan: isFan
 
 router.post '/', (req, res)->
     {uid, op} = req.body

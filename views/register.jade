@@ -15,23 +15,20 @@ html
             .info-card.clearfix
                 p Sign up
                 .center-self.center-block.clearfix
-                    form(action='/register', method='POST')
+                    form(action='/signup', method='POST')
                         .form-group
                             label(for='InputName') Name
-                            input#InputName.form-control(type='text', placeholder='Enter name')
+                            input#InputName.form-control(name='name' type='text', placeholder='Enter name')
                         .form-group
                             label(for='InputIdCard') idCard
-                            input#InputIdCard.form-control(type='text', placeholder='Enter idCard')
+                            input#InputIdCard.form-control(name='idCard' type='text', placeholder='Enter idCard')
                         .form-group
                             label(for='InputLocation') loc
-                            input#InputLocation.form-control(type='text', placeholder='Enter Location')
+                            input#InputLocation.form-control(name='loc' type='text', placeholder='Enter Location')
                         .form-group
                             label(for='InputEmail') Email address
-                            input#InputEmail.form-control(type='email', placeholder='Enter Email')
-                        .form-group
-                            label(for='InputPassword') Password
-                            input#InputPassword.form-control(type='password', placeholder='Password')
+                            input#InputEmail.form-control(name='email' type='email', placeholder='Enter Email')
 
-                    a(href='/' role="button").btn.btn-default.pull-right Home
+                        a(href='/' role="button").btn.btn-default.pull-right Home
 
-                    button.btn.btn-success.pull-right(type='submit') Signup
+                        button.btn.btn-success.pull-right(type='submit') Signup
