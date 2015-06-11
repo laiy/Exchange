@@ -5,48 +5,60 @@ html
         
         link(href='/bin/css/invitation.css' rel='stylesheet')
         link(href='.././lib/bootstrap/css/bootstrap.css' rel='stylesheet')
+        link(href=".././lib/icheck/skins/flat/blue.css" rel="stylesheet")
         script(src='.././lib/jquery.js')
         script(src='.././lib/bootstrap/js/bootstrap.js')
         script(src='.././lib/bootstrap/js/bootstrap-wysiwyg.js')
-        //- script(src='./bin/js/invite.js')
+        script(src='.././lib/icheck/icheck.js')
+        script(src='/bin/js/invitation.js')
     body
         #mainbox
           #daohang
-            ul.nav.nav-pills
-              li(role="presentation" class="active")
-                a(href="#") 首页
-              li(role="presentation")
-                a(href="#") 我的主页
+            nav.navbar.nav-background.navbar-default
+              div.container-fluid
+                  div.userInfo.navbar-header.navbar-left
+                      a.navbar-brand(href='/') Exchange
+      
+                  ul.nav.navbar-nav.navbar-right
+                      li
+                          a.col-md-4.btn.btn-link(href='/') 首页
+                      li
+                          a.col-md-4.btn.btn-link(href='/usr/') 个人页面
+                      li
+                          a.col-md-4.btn.btn-link(href='/') 退出
           #invitation
               div.panel.panel-info
                 div.panel-heading invitation
                 div.panel-footer
                   div.caption
-                    h4 亲爱的小吃货
+                    h4 亲爱的#{invite.uid}
                     p 
                     |我想帮你实现  
-                    a(href="#")一起跑内环  
+                    a(href="#") #{invite.wid} 
                     |的愿望，愿望交换~你快来选择我的一个愿望来实现吧~
                   div.from
                     p
                     |from:
-                    a(href="#")海绵宝宝
+                    a(href="#") #{invite.uid}
                 
                 #choose-wishes
                   div.panel.panel-primary
                     div.panel-heading invite
                     div.panel-footer
                      
-                      p 备注:请选一起跑内环
-                      //- p 我有三个愿望要实现  
-                      //-   input(type="checkbox") 
-                      //-   p 想去珠海看看，求同学带路～请吃饭
-                      //-   //- input(type="checkbox") 
-                      //-   //-   p 跑内环求约
-                      //-   //- input(type="checkbox") 
-                      //-   //-   p 你若教我不挂高数，我便为你送饭一个月
-
-                      button.agree(type="button" class="btn btn-primary") 接受
+                      p 备注:#{invite.remark}
+                        p 我有三个愿望要实现:
+                        input(type="radio" name="iCheck") 
+                        |想去珠海看看，求同学带路～请吃饭
+                        br
+                        input(type="radio" name="iCheck") 
+                        |跑内环求约
+                        br
+                        input(type="radio" name="iCheck") 
+                        |你若教我不挂高数，我便为你送饭一个月
+                      p 备注：
+                       input.remark
+                      button.agree(type="button" class="btn btn-success") 接受
                       button.disagree(type="button" class="btn btn-danger") 拒绝
 
                         

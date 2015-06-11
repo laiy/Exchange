@@ -13,55 +13,68 @@ html
         nav.navbar.nav-background.navbar-default
             div.container-fluid
                 div.userInfo.navbar-header.navbar-left
-                    span.navbar-brand user.username
+                    a.navbar-brand(href='/') Exchange
     
                 ul.nav.navbar-nav.navbar-right
                     li
                         a.col-md-4.btn.btn-link(href='/') 首页
                     li
-                        a.col-md-4.btn.btn-link(href='/usr') 个人页面
+                        a.col-md-4.btn.btn-link(href='/usr/') 个人页面
                     li
                         a.col-md-4.btn.btn-link(href='/') 退出
 
-        div.container.well.well-lg
-            p.title Wishes
+        div.container.well.well-lg.czy-container
 
-            ul.panel-group
-              li.panel.panel-default
-               div.userInfo
-                  p user.userName
-    
-               div.wishes
-                      p 主题:
-                          span wish.theme
-                      p 实现时间: 
-                          span wish.stt ~  wish.ddl
-                      p 状态: 
-                          span wish.status
-                      p 描述:
-                          span  wish.desc
-    
-               div.operator
-                   //if ivuser.userName == wish.publisher
-                   button.btn.btn-success(type="submit") 编辑
-                   button.btn.btn-success(type="submit") 删除
+            p.title
+              a(href='/usr/' + wish.uid) #{wish.uid}
+              span 的心愿
 
-              li.panel.panel-default
-               div.userInfo
-                  p user.userName
-    
-               div.wishes
-                      p 主题:
-                          span wish.theme
-                      p 实现时间: 
-                          span wish.stt ~  wish.ddl
-                      p 状态: 
-                          span wish.status
-                      p 描述:
-                          span  wish.desc
-    
-               div.operator
-                   //else
-                   button.btn.btn-success(type="submit") 点赞
-                   button.btn.btn-success(type="submit") 私信
-                   
+            - var isAuthor = (user && wish && wish.uid == user._id)
+
+            if isAuthor
+                form.wishInfo.center(method="POST" role="form" id="wishInfo")
+                    div.form-group
+                        label(for="title") 主题
+                        input.form-control(type='text' id='title' placeholder='Title' value=wish.title) 
+                    div.form-group
+                        - var stt = moment(wish.stt).format("YYYY-MM-DD")
+                        label(for="stt") 开始时间
+                        input.form-control(type='date' id='stt' placeholder='Start time' value=stt) 
+                    div.form-group
+                        - var ddl = moment(wish.ddl).format("YYYY-MM-DD")
+                        label(for="ddl") 结束时间
+                        input.form-control(type='date' id='ddl' placeholder='Finish time' value=ddl) 
+                    div.form-group
+                        label(for="loc")地点
+                        input.form-control(type='text' id='loc' placeholder='Location' value=wish.loc)
+                    div.form-group
+                        label(for="desc") 描述
+                        textarea.form-control(type='text' id='desc' placeholder='Description' rows="3" defaultValue=wish.desc) #{wish.desc}
+                    
+                    div.operator
+                        button.btn.btn-success(type="submit") 编辑
+                        button.btn.btn-success(type="submit") 删除
+
+            else
+                form.wishInfo.center(method="POST" role="form" id="wishInfo")
+                    div.form-group
+                        label(for="title") 主题
+                        input.form-control(type='text' id='title' placeholder='Title' readonly value=wish.title) 
+                    div.form-group
+                        - var stt = moment(wish.stt).format("YYYY-MM-DD")
+                        label(for="stt") 开始时间
+                        input.form-control(type='date' id='stt' placeholder='Start time' readonly value=stt) 
+                    div.form-group
+                        - var ddl = moment(wish.ddl).format("YYYY-MM-DD")
+                        label(for="ddl") 结束时间
+                        input.form-control.wishDdl(type='date' id='ddl' placeholder='Finish time' readonly value=ddl)
+                    div.form-group
+                        label(for="loc")地点
+                        input.form-control(type='text' id='loc' placeholder='Location' readonly value=wish.loc)
+                    div.form-group
+                        label(for="desc") 描述
+                        textarea.form-control.wishDesc(type='text' id='desc' placeholder='Description' rows="3" readonly value=wish.desc) #{wish.desc}
+                    
+                    div.operator
+                        button.btn.btn-success(type="none") 点赞
+                        button.btn.btn-success(type="none") 私信
