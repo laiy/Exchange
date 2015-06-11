@@ -1,4 +1,5 @@
 express = require 'express'
+mongoose = require 'mongoose'
 router = express.Router()
 WishModel = require '../db/models/wish.coffee'
 mockData = require '../test/mock-data.coffee'
