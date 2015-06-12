@@ -2,20 +2,28 @@ doctype html
 html
     head
         title invite
-        link(href='/bin/css/invite.css' rel='stylesheet')
-        link(href='./lib/bootstrap/css/bootstrap.css' rel='stylesheet')
-        script(src='./lib/jquery.js')
-        script(src='./lib/bootstrap/js/bootstrap.js')
-        script(src='./lib/bootstrap/js/bootstrap-wysiwyg.js')
-        //- script(src='./bin/js/invite.js')
+        link(href='../bin/css/invite.css' rel='stylesheet')
+        link(href='../lib/bootstrap/css/bootstrap.css' rel='stylesheet')
+        link(href='../lib/line-control/editor.css' rel='stylesheet')
+        script(src='../lib/jquery.js')
+        script(src='../lib/bootstrap/js/bootstrap.js')
+        //- script(src='../lib/line-control/editor.js')
+        script(src='../bin/js/invite.js')
     body
         #mainbox
           #daohang
-            ul.nav.nav-pills
-              li(role="presentation" class="active")
-                a(href="#") 首页
-              li(role="presentation")
-                a(href="#") 我的主页
+            nav.navbar.nav-background.navbar-default
+              div.container-fluid
+                  div.userInfo.navbar-header.navbar-left
+                      a.navbar-brand(href='/') Exchange
+      
+                  ul.nav.navbar-nav.navbar-right
+                      li
+                          a.col-md-4.btn.btn-link(href='/') 首页
+                      li
+                          a.col-md-4.btn.btn-link(href='/usr/') 个人页面
+                      li
+                          a.col-md-4.btn.btn-link(href='/') 退出
           #exchange
               div.panel.panel-info
                 div.panel-heading Wish Exchange
@@ -23,28 +31,30 @@ html
                   div.row
                     div.col-xs-4.col-md-4
                       div.thumbnail
-                        img(src="./assets/img/user/shichen.jpg" alt="me")
+                        img(src="../src/img/shichen.jpg" alt="me")
                         div.caption
-                          h3 me
-                          p there are sometin4 about me such as Signature, Personal Information and so on
+                          h3 #{wish.uid}
+                          //- p there are sometin4 about me such as Signature, Personal Information and so on
                     div.col-xs-4.col-md-4
-                      img#ex(src="./assets/img/user/exchange.png" alt="exchange")
+                      img#ex(src="../src/img/exchange.png" alt="exchange")
                     div.col-xs-4.col-md-4.others
                       div.thumbnail
-                        img(src="./assets/img/user/daofeng.png" alt="...")
+                        img(src="../src/img/daofeng.png" alt="...")
                         div.caption
-                          h3 小吃货
-                          p there are someting about others such as Signature, Personal Information and so on
+                          h3 #{wish.uid}
+                          //- p there are someting about others such as Signature, Personal Information and so on
                 #invite
                   div.panel.panel-primary
                     div.panel-heading invite
                     div.panel-footer
                       div.caption
-                        h4 亲爱的小吃货
+                        h4 亲爱的
+                          a(href="#") #{wish.uid}
                         p 
                         |我想帮你实现  
-                        a(href="#")一起跑内环  
+                        a(href='/wish/' + wish.uid) #{wish.title}  
                         |的愿望，愿望交换~你快来选择我的一个愿望来实现吧~
                       p 备注:
-                        input
-                      button.send(type="button" class="btn btn-primary") 发送
+                        input.remark
+                        
+                      button.send(type="button" class="btn btn-success") 发送
