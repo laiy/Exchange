@@ -7,7 +7,7 @@ html
         // link(href='http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css', rel='stylesheet')
         link(href='./lib/bootstrap/css/bootstrap.min.css' rel='stylesheet')
         link(href='/bin/css/register.css' rel='stylesheet')
-        script(src='./bin/js/register.js')
+
 
     body
         #modify.wrapper.clearfix
@@ -15,7 +15,7 @@ html
             .info-card.clearfix
                 p Sign up
                 .center-self.center-block.clearfix
-                    form(action='/signup', method='POST')
+                    form
                         .form-group
                             label(for='InputName') Name
                             input#InputName.form-control(name='name' type='text', placeholder='Enter name')
@@ -31,4 +31,5 @@ html
 
                         a(href='/' role="button").btn.btn-default.pull-right Home
 
-                        button.btn.btn-success.pull-right(type='submit') Signup
+                        button#register.btn.btn-success.pull-right(type='submit') Signup
+        script(src='./bin/js/register.js')
