@@ -28,17 +28,28 @@ html
 
             ul.nav.navbar-nav.navbar-right
               li
-                  button(id="log-out")退出         
+                a(href='/') 首页
               li
-                  p 消息
+                a(href='/user/'+user.idCard) 我的主页
+              li
+                button.btn.btn-default.navbar-btn(id="log-out") 退出         
+
             ul.nav.navbar-nav
               li.active
-                  a(href='#')
+                a(href='#')
                   |  个人资料
                   span.sr-only (current)
               li
-                  a(href='/list/' + usr._id) 联系人列表
-                
+                a(href='/list/' + usr._id) 联系人列表
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                  | 我的邀请
+                  span.caret
+                ul.dropdown-menu(role='menu')
+                  if invites
+                    each invite in invites
+                      li
+                        a(href='/invitation/' + invite._id) invite.remark
 
       .info-card
         i.icon-pencil-squared.modify-btn
@@ -50,33 +61,30 @@ html
             .card-avatar
           //- 此处判断用户是否自己，如果是自己则按钮为修改资料，否则按钮改为关注或私信他人
           .info-detail
-            if user
-              //- 因为无法维持登陆，所以没有测试过这个判断的语法是否正确
+            if user.idCard == usr.idCard
               form
                 input#nickname(type='text', value='#{usr.name}', disabled='true')
                 input#mood(type='text', placeholder='#{usr.email}', disabled)
-                input#fo(type='hidden', name='op', value='fo')
                 input#uid(type='hidden', name='uid', value='#{usr.idCard}')
                 div.lyj
-                    a(href='/create').cjs-1.btn.btn-primary.login-button.auth po心愿
-                    button#change.cjs-2.btn.btn-default.login-button.auth 改资料
+                  a(href='/create').cjs-1.btn.btn-primary.login-button.auth po心愿
+                  button#change.cjs-2.btn.btn-default.login-button.auth 改资料
             else  
               form
                 input#nickname(type='text', value='#{usr.name}', disabled='true')
                 input#mood(type='text', placeholder='#{usr.email}', disabled)
-                input#fo(type='hidden', name='op', value='fo')
                 input#uid(type='hidden', name='uid', value='#{usr.idCard}')
                 div.lyj
-                  if isfan
+                  if isFan
                     button#unfo.cjs-1.btn.btn-danger.login-button.auth(type='button') 取关
                   else
                     button#tofo.cjs-1.btn.btn-primary.login-button.auth(type='button') 关注
                   button#chat.cjs-2.btn.btn-default.login-button.auth(type='button') 私信
 
-            .invitation
-                if invites
-                    p invitations:
-                    each invite in invites
-                        a(href='/invitation/' + invite._id)=invite.remark
-                        br
+            //- .invitation
+            //-     if invites
+            //-         p invitations:
+            //-         each invite in invites
+            //-             a(href='/invitation/' + invite._id)=invite.remark
+            //-             br
     script(src='.././bin/js/usr.js')
