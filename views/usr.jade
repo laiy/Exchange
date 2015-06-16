@@ -30,7 +30,7 @@ html
               li
                 a(href='/') 首页
               li
-                a(href='/user/'+user.idCard) 我的主页
+                a(href='/user/' + user.idCard) 我的主页
               li
                 button.btn.btn-default.navbar-btn(id="log-out") 退出         
 
@@ -49,7 +49,7 @@ html
                   if invites
                     each invite in invites
                       li
-                        a(href='/invitation/' + invite._id) invite.remark
+                        a(href='/invitation/' + invite._id)=invite.remark
 
       .info-card
         i.icon-pencil-squared.modify-btn
@@ -65,7 +65,8 @@ html
               form
                 input#nickname(type='text', value='#{usr.name}', disabled='true')
                 input#mood(type='text', placeholder='#{usr.email}', disabled)
-                input#uid(type='hidden', name='uid', value='#{usr.idCard}')
+                input#idcard(type='hidden', name='idcard', value='#{usr.idCard}')
+                input#uid(type='hidden', name='uid', value='#{usr._id}')
                 div.lyj
                   a(href='/create').cjs-1.btn.btn-primary.login-button.auth po心愿
                   button#change.cjs-2.btn.btn-default.login-button.auth 改资料
@@ -73,7 +74,8 @@ html
               form
                 input#nickname(type='text', value='#{usr.name}', disabled='true')
                 input#mood(type='text', placeholder='#{usr.email}', disabled)
-                input#uid(type='hidden', name='uid', value='#{usr.idCard}')
+                input#idcard(type='hidden', name='idcard', value='#{usr.idCard}')
+                input#uid(type='hidden', name='uid', value='#{usr._id}')
                 div.lyj
                   if isFan
                     button#unfo.cjs-1.btn.btn-danger.login-button.auth(type='button') 取关
