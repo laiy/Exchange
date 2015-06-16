@@ -1,45 +1,81 @@
 doctype html
 html
-    head
-        title register
-        script(src='./lib/jquery.js')
-        script(src='./lib/bootstrap/js/bootstrap.min.js')
-        // link(href='http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css', rel='stylesheet')
-        link(href='./lib/bootstrap/css/bootstrap.min.css' rel='stylesheet')
-
-        
+  head
+    title register
+    script(src='./lib/jquery.js')
+    script(src='./lib/bootstrap/js/bootstrap.min.js')
+    // link(href='http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css', rel='stylesheet')
+    link(href='./lib/bootstrap/css/bootstrap.min.css' rel='stylesheet')
 
 
-        link(href='/bin/css/usr.css' rel='stylesheet')
-        script(src='./bin/js/usr.js')
-body
+    link(href='/bin/css/usr.css' rel='stylesheet')
 
-  #modify.wrapper
+  body
+    #modify.wrapper
+      nav.navbar.navbar-default.background-self
+        .container-fluid
+            // Brand and toggle get grouped for better mobile display
+          .navbar-header
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+              span.sr-only Toggle navigation
+              |         
+              span.icon-bar
+              |         
+              span.icon-bar
+              |         
+              span.icon-bar
+            |       
+            a.navbar-brand(href='/') Exchange
+
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+
+            if user 
+              ul.nav.navbar-nav.navbar-right
+                li
+                  a(href='#') 退出         
+                li
+                  p 消息
+              ul.nav.navbar-nav
+                li.active
+                  a(href='#')
+                    |  个人资料
+                    span.sr-only (current)
+                li
+                  a(href='/list') 联系人列表
+                
+
       .info-card
         i.icon-pencil-squared.modify-btn
         |         
         .info-wrapper
           .avatar-round
-            input#avatarupload(type='file', name='')
+            input#avatarupload(type='file', name='', disabled)
             |             
             .card-avatar
-          |           
+          //- 此处判断用户是否自己，如果是自己则按钮为修改资料，否则按钮改为关注或私信他人
           .info-detail
             if user
-              a(href='/' role="button").btn.btn-primary.login-button.auth.center-block Home
-
+              //- 因为无法维持登陆，所以没有测试过这个判断的语法是否正确
+              if user.idCard === '#{usr.idCard}'
+                form
+                  input#nickname(type='text', value='#{usr.name}', disabled='true')
+                  input#mood(type='text', placeholder='#{usr.email}', disabled)
+                  input#fo(type='hidden', name='op', value='fo')
+                  input#uid(type='hidden', name='uid', value='#{usr.idCard}')
+                  div.lyj
+                    a(role='button', href='/create').cjs-1.btn.btn-primary.login-button.auth po心愿
+                    button#change.cjs-2.btn.btn-default.login-button.auth 改资料
             else  
-              form(action='/user', method='POST')
-                input#nickname(type='text', value='#{usr.name}', disabled='true')            
+              form
+                input#nickname(type='text', value='#{usr.name}', disabled='true')
                 input#mood(type='text', placeholder='#{usr.email}', disabled)
                 input#fo(type='hidden', name='op', value='fo')
                 input#uid(type='hidden', name='uid', value='#{usr.idCard}')
-                button.btn.btn-primary.login-button.auth.center-block(type='submit') 关注
-              a(href='/' role="button").cjs-width.btn.btn-primary.login-button.center-block Home
-            //- else
-            //-   form(action='/signup', method='POST')
-            //-     input#nickname(type='text', value='#{usr.name}', disabled='true')
-            //-     |             
-            //-     input#mood(type='text', placeholder='#{usr.email}', disabled)
+                div.lyj
+                  if isfan
+                    button#unfo.cjs-1.btn.btn-danger.login-button.auth(type='button') 取关
+                  else
+                    button#tofo.cjs-1.btn.btn-primary.login-button.auth(type='button') 关注
+                  button#chat.cjs-2.btn.btn-default.login-button.auth(type='button') 私信
 
-            //-     button.btn.btn-primary.login-button.auth.center-block(type='') 修改资料
+    script(src='./bin/js/usr.js')
