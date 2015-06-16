@@ -7,8 +7,6 @@ html
         link(href='../lib/line-control/editor.css' rel='stylesheet')
         script(src='../lib/jquery.js')
         script(src='../lib/bootstrap/js/bootstrap.js')
-        //- script(src='../lib/line-control/editor.js')
-        script(src='../bin/js/invite.js')
     body
         #mainbox
           #daohang
@@ -33,7 +31,7 @@ html
                       div.thumbnail
                         img(src="../src/img/shichen.jpg" alt="me")
                         div.caption
-                          h3 #{wish.uid}
+                          h3 #{user._id}
                           //- p there are sometin4 about me such as Signature, Personal Information and so on
                     div.col-xs-4.col-md-4
                       img#ex(src="../src/img/exchange.png" alt="exchange")
@@ -55,6 +53,6 @@ html
                         a(href='/wish/' + wish.uid) #{wish.title}  
                         |的愿望，愿望交换~你快来选择我的一个愿望来实现吧~
                       p 备注:
-                        input.remark
-                        
-                      button.send(type="button" class="btn btn-success") 发送
+                        input#remark
+                      button.send(id="send-button" type="button" class="btn btn-success" wish-id=wish._id) 发送
+        script(src='../bin/js/invite.js')

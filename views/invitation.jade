@@ -9,8 +9,7 @@ html
         script(src='.././lib/jquery.js')
         script(src='.././lib/bootstrap/js/bootstrap.js')
         script(src='.././lib/bootstrap/js/bootstrap-wysiwyg.js')
-        script(src='.././lib/icheck/icheck.js')
-        script(src='/bin/js/invitation.js')
+        script(src='./lib/icheck/icheck.js')
     body
         #mainbox
           #daohang
@@ -47,19 +46,11 @@ html
                     div.panel-footer
                      
                       p 备注:#{invite.remark}
-                        p 我有三个愿望要实现:
-                        input(type="radio" name="iCheck") 
-                        |想去珠海看看，求同学带路～请吃饭
-                        br
-                        input(type="radio" name="iCheck") 
-                        |跑内环求约
-                        br
-                        input(type="radio" name="iCheck") 
-                        |你若教我不挂高数，我便为你送饭一个月
-                      p 备注：
-                       input.remark
-                      button.agree(type="button" class="btn btn-success") 接受
-                      button.disagree(type="button" class="btn btn-danger") 拒绝
+                      p 愿望：
+                       input#remark
+                      button.agree(id="agree" type="button" class="btn btn-success" wid=invite.wid iid=invite._id) 接受
+                      button.disagree(id="disagree" type="button" class="btn btn-danger" wid=invite.wid iid=invite._id) 拒绝
+        script(src='/bin/js/invitation.js')
 
                         
                         

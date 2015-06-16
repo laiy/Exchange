@@ -8,9 +8,8 @@ mockData = require '../test/mock-data.coffee'
 * render 'wish' when get '/wish'
 ###
 router.get '/:id', (req, res)->
-    res.render 'wish', wish: mockData.wish
     wid = mongoose.Types.ObjectId req.params.id
-    WishModel.findOne {wid: wid}, (err, wish)->
+    WishModel.findOne {_id: wid}, (err, wish)->
         if err
             return res.status(500).send 'Server Error.'
         if not wish

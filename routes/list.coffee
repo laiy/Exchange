@@ -1,4 +1,5 @@
 express = require 'express'
+mongoose = require 'mongoose'
 router = express.Router()
 UserModel = require '../db/models/user.coffee'
 mockData = require '../test/mock-data.coffee'
@@ -7,9 +8,8 @@ mockData = require '../test/mock-data.coffee'
 * render 'list' when get '/list'
 ###
 router.get '/:id', (req, res)->
-    res.render 'list', usr: mockData.usr
     uid = mongoose.Types.ObjectId req.params.id
-    UserModel.findOne {idCard: uid}, (err, user)->
+    UserModel.findOne {_id: uid}, (err, user)->
         if err
             res.status(500).send 'Server Error.'
         else if not user

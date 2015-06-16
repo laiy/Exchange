@@ -3,14 +3,14 @@ mongoose = require 'mongoose'
 router = express.Router()
 InviteModel = require '../db/models/invite.coffee'
 mockData = require '../test/mock-data.coffee'
+WishModel = require '../db/models/wish.coffee'
 
 ###
 * render 'invitation' when get '/invitation'
 ###
 router.get '/:id', (req, res)->
     iid = mongoose.Types.ObjectId req.params.id
-    res.render 'invitation', invite: mockData.invite
-    InviteModel.findOne {iid: iid}, (err, invite)->
+    InviteModel.findOne {_id: iid}, (err, invite)->
         if err
             return res.status(500).send 'Server Error.'
         if not invite
@@ -23,7 +23,7 @@ router.get '/:id', (req, res)->
 ###
 router.post '/', (req, res)->
     {iid, wid, msg, ref} = req.body
-    WishModel.findOne {wid: wid}, (err, wish)->
+    WishModel.findOne {_id: wid}, (err, wish)->
         if err
             return res.status(500).send 'Server Error.'
         if not wish

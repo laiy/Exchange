@@ -17,9 +17,14 @@ util = require '../common/util.coffee'
 ###
 router.post '/', (req, res)->
     {name, idCard, loc, email} = req.body
+    console.log name
+    console.log idCard
+    console.log loc
+    console.log email
     UserModel.findOne {idCard: idCard}, (err, user)->
+        console.log user
         if user
-            return res.json {result: 'fail', msg: 'Username has already existed.'}
+            return res.json {result: 'fail', msg: 'Idcard has already existed.'}
         else if not /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/.test(idCard)
             return res.json {result: 'fail', msg: 'Invalid idCard.'}
         else if not /^([a-zA-Z0-9\u4e00-\u9fa5]+[_|\_|\.-]?)*[a-zA-Z0-9\u4e00-\u9fa5]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(email)

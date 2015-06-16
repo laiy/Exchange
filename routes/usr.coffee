@@ -1,14 +1,15 @@
 express = require 'express'
+mongoose = require 'mongoose'
 router = express.Router()
 UserModel = require '../db/models/user.coffee'
 mockData = require '../test/mock-data.coffee'
+InviteModel = require '../db/models/invite.coffee'
 
 ###
 * render 'usr' when get '/usr'
 ###
 router.get '/:id', (req, res)->
-    res.render 'usr', usr: mockData.usr
-    uid = mongoose.Types.ObjectId req.params.id
+    uid = req.params.id
     UserModel.findOne {idCard: uid}, (err, user)->
         if err
             res.status(500).send 'Server Error.'
@@ -19,7 +20,8 @@ router.get '/:id', (req, res)->
             for fan in user.fans
                 if fan is req.session.user._id
                     isFan = true
-            res.render 'usr', usr: user, isFan: isFan
+            InviteModel.find {wishOwner: user._id, stat: 'Waiting'}, (err, invites)->
+                res.render 'usr', usr: user, isFan: isFan, invites: invites
 
 router.post '/', (req, res)->
     {uid, op} = req.body

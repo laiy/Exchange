@@ -3,7 +3,7 @@
     var yy;
     e.preventDefault();
     yy = $.post('/log/session', {
-      param1: $('#InputIdCard').value
+      idCard: $('#InputIdCard').val()
     });
     return yy.done(function(data) {
       if (data.result) {

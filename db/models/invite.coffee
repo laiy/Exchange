@@ -9,7 +9,8 @@ InviteSchema = new Schema
     remark      : String,
     stat        : {type: String, default: 'Waiting'},
     replyTime   : Date,
-    replyMsg    : String
+    replyMsg    : String,
+    wishOwner   : ObjectId
 
 InviteModel = mongoose.model('InviteModel', InviteSchema)
 

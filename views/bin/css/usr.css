@@ -3,14 +3,6 @@ body {
   width: 100%;
   height: 100%; }
 
-a {
-  margin: 75px;
-  display: inline-block; }
-
-button {
-  margin: 15px;
-  display: inline-block; }
-
 #modify.wrapper {
   position: absolute;
   top: 0;
@@ -40,6 +32,7 @@ button {
   bottom: 0;
   left: 0;
   width: 80%;
+  width: 600px;
   height: 70%;
   margin: auto;
   border-radius: 6px;
@@ -86,7 +79,7 @@ button {
 
 .info-detail input {
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 28px;
   width: 100%;
   text-align: center;
   color: #2f3f50;
@@ -94,7 +87,7 @@ button {
   background-color: transparent; }
 
 .info-detail input#mood {
-  font-size: 13px;
+  font-size: 22px;
   color: #b0b8c1; }
 
 .info-detail input:focus {
@@ -145,22 +138,49 @@ button {
 .loading-info h2 {
   font-size: 20px; }
 
-a {
-  width: 80px; }
+.cjs-1 {
+  width: 55px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  margin-left: 250%;
+  margin-top: 20px; }
 
-@media screen and (min-width: 800px) {
-  .info-card {
-    opacity: 0.8;
+.cjs-2 {
+  width: 55px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  margin-left: 350%;
+  margin-top: 20px; }
+
+.lyj {
+  position: relative;
+  width: 50px;
+  height: 50px; }
+
+@media screen and (max-width: 310px) {
+  .cjs-1 {
+    width: 51px;
+    height: 33px;
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 800px;
-    height: 70%;
-    margin: auto;
-    border-radius: 6px;
-    background-color: #fafafa;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); } }
+    top: 50%;
+    left: 63%;
+    margin-left: 20px;
+    margin-top: 20px; }
+
+  .cjs-2 {
+    width: 51px;
+    height: 33px;
+    position: absolute;
+    top: 50%;
+    left: 120%;
+    margin-left: 100%;
+    margin-top: 20px; }
+
+  .info-card {
+    width: 300px; } }
 
 /*# sourceMappingURL=usr.css.map */

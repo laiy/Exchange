@@ -11,6 +11,6 @@ if not process.env.NODE_ENV
 * set database url
 ###
 config.TEST_DB_URI = "mongodb://localhost/mocha-test"
-config.PRODUCTION_DB_URI = "mongodb://localhost/Exchange"
+config.PRODUCTION_DB_URI = "mongodb://localhost/exchange"
 config.SECRET_KEY = "-a052-31av5-4s2voo17sjasf-j2-s"
 

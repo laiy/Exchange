@@ -1,5 +1,14 @@
 body {
+  width: 100%;
+  height: 100%; }
+
+#cjs-wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
   background-image: url(/src/img/bg.jpg);
+  background-repeat: no-repeat;
   background-size: cover; }
 
 .wrapper-self {

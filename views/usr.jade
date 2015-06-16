@@ -2,13 +2,10 @@ doctype html
 html
   head
     title register
-    script(src='./lib/jquery.js')
-    script(src='./lib/bootstrap/js/bootstrap.min.js')
-    // link(href='http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css', rel='stylesheet')
-    link(href='./lib/bootstrap/css/bootstrap.min.css' rel='stylesheet')
-
-
-    link(href='/bin/css/usr.css' rel='stylesheet')
+    script(src='.././lib/jquery.js')
+    script(src='.././lib/bootstrap/js/bootstrap.min.js')
+    link(href='.././lib/bootstrap/css/bootstrap.min.css' rel='stylesheet')
+    link(href='.././bin/css/usr.css' rel='stylesheet')
 
   body
     #modify.wrapper
@@ -29,19 +26,18 @@ html
 
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
 
-            if user 
-              ul.nav.navbar-nav.navbar-right
-                li
-                  a(href='#') 退出         
-                li
-                  p 消息
-              ul.nav.navbar-nav
-                li.active
-                  a(href='#')
-                    |  个人资料
-                    span.sr-only (current)
-                li
-                  a(href='/list') 联系人列表
+            ul.nav.navbar-nav.navbar-right
+            li
+                button(id="log-out")退出         
+            li
+                p 消息
+            ul.nav.navbar-nav
+            li.active
+                a(href='#')
+                |  个人资料
+                span.sr-only (current)
+            li
+                a(href='/list/' + usr._id) 联系人列表
                 
 
       .info-card
@@ -56,14 +52,13 @@ html
           .info-detail
             if user
               //- 因为无法维持登陆，所以没有测试过这个判断的语法是否正确
-              if user.idCard === '#{usr.idCard}'
-                form
-                  input#nickname(type='text', value='#{usr.name}', disabled='true')
-                  input#mood(type='text', placeholder='#{usr.email}', disabled)
-                  input#fo(type='hidden', name='op', value='fo')
-                  input#uid(type='hidden', name='uid', value='#{usr.idCard}')
-                  div.lyj
-                    a(role='button', href='/create').cjs-1.btn.btn-primary.login-button.auth po心愿
+              form
+                input#nickname(type='text', value='#{usr.name}', disabled='true')
+                input#mood(type='text', placeholder='#{usr.email}', disabled)
+                input#fo(type='hidden', name='op', value='fo')
+                input#uid(type='hidden', name='uid', value='#{usr.idCard}')
+                div.lyj
+                    a(href='/create').cjs-1.btn.btn-primary.login-button.auth po心愿
                     button#change.cjs-2.btn.btn-default.login-button.auth 改资料
             else  
               form
@@ -78,4 +73,10 @@ html
                     button#tofo.cjs-1.btn.btn-primary.login-button.auth(type='button') 关注
                   button#chat.cjs-2.btn.btn-default.login-button.auth(type='button') 私信
 
-    script(src='./bin/js/usr.js')
+            .invitation
+                if invites
+                    p invitations:
+                    each invite in invites
+                        a(href='/invitation/' + invite._id)=invite.remark
+                        br
+    script(src='.././bin/js/usr.js')

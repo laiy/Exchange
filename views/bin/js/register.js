@@ -3,10 +3,10 @@
     var yy;
     e.preventDefault();
     yy = $.post('/signup', {
-      param1: $('#InputName').value,
-      param2: $('#InputIdCard').value,
-      param3: $('#InputLocation').value,
-      param4: $('#InputEmail').value
+      name: $('#InputName').val(),
+      idCard: $('#InputIdCard').val(),
+      loc: $('#InputLocation').val(),
+      email: $('#InputEmail').val()
     });
     return yy.done(function(data) {
       if (data.result) {

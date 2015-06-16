@@ -1,6 +1,6 @@
 doctype html
 html
-  head
+  he
     title Exchange
     link(href='/bin/css/bootstrap.min.css', rel='stylesheet')
     script(src='/bin/js/jquery-2.1.4.min.js')
@@ -47,7 +47,7 @@ html
                      a(href='/') 首页
                    |         
                    li
-                     a(href='/user'+user.idCard) 我的主页
+                     a(href='/user/'+user.idCard) 我的主页
                 else 
                   ul.nav.navbar-nav.navbar-right
                    li
@@ -64,7 +64,7 @@ html
                   div.cjs-row
                     - for (var j = i; j < wishes.length && j < i+3; j++)
                       div.cjs-cell
-                        a.ui.card(href='/wish' + wishes[j].uid)
+                        a.ui.card(href='/wish/' + wishes[j]._id)
                           .content
                             .header=wishes[j].title
                             .meta

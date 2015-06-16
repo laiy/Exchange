@@ -14,10 +14,24 @@ WishSchema = new Schema
 WishModel = mongoose.model('WishModel', WishSchema);
 
 WishModel.invite = (wid, msg, uid, callback)->
-    InviteModel.create
-        uid    : uid,
-        wid    : wid,
-        remark : msg
+    WishModel.findOne {_id: wid}, (err, wish)->
+        if wish
+            console.log wish
+            InviteModel.create
+                uid    : uid,
+                wid    : wid,
+                remark : msg
+                wishOwner: wish.uid
+            , callback
+
+WishModel.createWish = (uid, title, stt, ddl, loc, desc, callback)->
+    WishModel.create
+        uid: uid
+        title: title,
+        stt: stt,
+        ddl: ddl,
+        loc: loc,
+        desc: desc
     , callback
 
 module.exports = WishModel;

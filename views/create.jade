@@ -29,18 +29,18 @@ html
             form.wishInfo.center(method="POST" role="form")
                 div.form-group
                     label(for="title") 主题
-                    input.form-control(type='text' id='title' placeholder='Title') 
+                    input.form-control(name='title' type='text' id='title' placeholder='Title') 
                 div.form-group
                     label(for="stt") 开始时间
-                    input.form-control(type='date' id='stt' placeholder='Start time') 
+                    input.form-control(name='stt' type='date' id='stt' placeholder='Start time') 
                 div.form-group
                     label(for="ddl") 结束时间
-                    input.form-control(type='date' id='ddl' placeholder='Finish time') 
+                    input.form-control(name='ddl' type='date' id='ddl' placeholder='Finish time') 
                 div.form-group
                     label(for="loc")地点
-                    input.form-control(type='text' id='loc' placeholder='Location')
+                    input.form-control(name='loc' type='text' id='loc' placeholder='Location')
                 div.form-group
                     label(for="desc") 描述
-                    textarea.form-control(type='text' id='desc' placeholder='Description' rows="3")
+                    textarea.form-control(name='desc' type='text' id='desc' placeholder='Description' rows="3")
                 button.btn.btn-success(type='submit') 发布
                 button.btn.btn-default(type='reset') 取消
