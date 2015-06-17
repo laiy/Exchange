@@ -3,35 +3,40 @@
     $("#tofo").click(function(e) {
       var yy;
       e.preventDefault();
-      console.log("in");
+      console.log($('#uid').val());
       yy = $.post('/user', {
-        param1: $('#uid').value,
-        param2: 'fo'
+        uid: $('#idcard').val(),
+        op: 'fo'
       });
-      return yy.done(function(data) {
+      yy.done(function(data) {
         if (data.result) {
           if (data.result === 'success') {
-            return alert('success');
+            alert("success");
+            window.location.replace("/list/" + $("#uid").val());
           } else {
-            return alert("fail");
+            alert("fail");
           }
         }
       });
+      yy.complete(function(){
+        console.log('hehe');
+      });
     });
-    return $("#unfo").click(function(e) {
+    $("#unfo").click(function(e) {
       var yy;
       e.preventDefault();
       console.log("in");
       yy = $.post('/user', {
-        param1: $('#uid').value,
-        param2: 'unfo'
+        uid: $('#idcard').val(),
+        op: 'unfo'
       });
-      return yy.done(function(data) {
+      yy.done(function(data) {
         if (data.result) {
           if (data.result === 'success') {
-            return alert('success');
+            alert('success');
+            window.location.replace("/list/" + $("#uid").val());
           } else {
-            return alert("fail");
+            alert("fail");
           }
         }
       });
