@@ -17,7 +17,7 @@ router.post '/', (req, res)->
             res.json {result: 'fail', msg: 'Title has already existed.'}
         else
             uid = req.session.user._id
-            WishModel.createWish uid, title, stt, ddl, loc, desc, ->
+            WishModel.createWish uid, title, stt, ddl, loc, desc, req.session.user.idCard, ->
                 res.json {result: 'success'}
 
 module.exports = router

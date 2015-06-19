@@ -3,7 +3,6 @@
     $("#tofo").click(function(e) {
       var yy;
       e.preventDefault();
-      console.log($('#uid').val());
       yy = $.post('/user', {
         uid: $('#idcard').val(),
         op: 'fo'

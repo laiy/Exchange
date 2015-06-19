@@ -32,10 +32,12 @@ router.post '/', (req, res)->
             res.json {result: 'fail', msg: 'User not found.'}
         else
             if op is 'fo'
-                UserModel.fo uid, ->
+                UserModel.fo req.session.user._id, user._id, ->
+                    console.log 'fo'
                     res.json {result: 'success'}
             else
-                UserModel.unfo uid, ->
+                UserModel.unfo req.seesion.user._id, user._id, ->
+                    console.log 'unfo'
                     res.json {result: 'success'}
 
 module.exports = router

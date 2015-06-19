@@ -10,6 +10,7 @@ WishSchema = new Schema
     ddl         : {type: Date, required: true},
     title       : {type: String, required: true},
     desc        : String
+    uIdCard     : String
 
 WishModel = mongoose.model('WishModel', WishSchema);
 
@@ -24,14 +25,15 @@ WishModel.invite = (wid, msg, uid, callback)->
                 wishOwner: wish.uid
             , callback
 
-WishModel.createWish = (uid, title, stt, ddl, loc, desc, callback)->
+WishModel.createWish = (uid, title, stt, ddl, loc, desc, uIdCard, callback)->
     WishModel.create
         uid: uid
         title: title,
         stt: stt,
         ddl: ddl,
         loc: loc,
-        desc: desc
+        desc: desc,
+        uIdCard: uIdCard
     , callback
 
 module.exports = WishModel;
