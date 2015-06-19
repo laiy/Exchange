@@ -4,7 +4,7 @@ html
         title invite
         link(href='../bin/css/invite.css' rel='stylesheet')
         link(href='../lib/bootstrap/css/bootstrap.css' rel='stylesheet')
-        link(href='../lib/line-control/editor.css' rel='stylesheet')
+
         script(src='../lib/jquery.js')
         script(src='../lib/bootstrap/js/bootstrap.js')
     body
@@ -19,9 +19,8 @@ html
                       li
                           a.col-md-4.btn.btn-link(href='/') 首页
                       li
-                          a.col-md-4.btn.btn-link(href='/usr/') 个人页面
-                      li
-                          a.col-md-4.btn.btn-link(href='/') 退出
+                          a(href='/user/' + user.idCard) 我的主页
+
           #exchange
               div.panel.panel-info
                 div.panel-heading Wish Exchange
@@ -31,7 +30,7 @@ html
                       div.thumbnail
                         img(src="../src/img/shichen.jpg" alt="me")
                         div.caption
-                          h3 #{user._id}
+                          h3 #{user.name}
                           //- p there are sometin4 about me such as Signature, Personal Information and so on
                     div.col-xs-4.col-md-4
                       img#ex(src="../src/img/exchange.png" alt="exchange")
@@ -39,18 +38,17 @@ html
                       div.thumbnail
                         img(src="../src/img/daofeng.png" alt="...")
                         div.caption
-                          h3 #{wish.uid}
+                          h3 对方
+                          a(href="/user/"+wish.uIdCard) (用户资料)
                           //- p there are someting about others such as Signature, Personal Information and so on
                 #invite
                   div.panel.panel-primary
                     div.panel-heading invite
                     div.panel-footer
                       div.caption
-                        h4 亲爱的
-                          a(href="#") #{wish.uid}
                         p 
                         |我想帮你实现  
-                        a(href='/wish/' + wish.uid) #{wish.title}  
+                        a(href='/wish/' + wish._id) #{wish.title}  
                         |的愿望，愿望交换~你快来选择我的一个愿望来实现吧~
                       p 备注:
                         input#remark

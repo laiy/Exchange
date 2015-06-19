@@ -43,38 +43,54 @@ html
 
                 if user 
                  ul.nav.navbar-nav.navbar-right
-                   li
-                     a(href='/') 首页
-                   |         
-                   li
-                     a(href='/user/'+user.idCard) 我的主页
+                    li
+                      a(href='/') 首页
+                    |         
+                    li
+                      a(href='/user/'+user.idCard) 我的主页
+                    li
+                      button.btn.btn-default.navbar-btn(id="log-out") 退出
+
                 else 
                   ul.nav.navbar-nav.navbar-right
                    li
-                     a(href='/log') 登陆
+                      a(href='/log') 登陆
                    |         
                    li
-                     a(href='/signup') 注册
+                      a(href='/signup') 注册
 
         div.center-block
           if wishes
             div(style="margin:50px")
               div.wrapper-self
-                - for (var i=0; i<wishes.length; i=j)
+                - for (var i=0; i< 6; i=j)
                   div.cjs-row
                     - for (var j = i; j < wishes.length && j < i+3; j++)
                       div.cjs-cell
-                        a.ui.card(href='/wish/' + wishes[j]._id)
-                          .content
-                            .header=wishes[j].title
-                            .meta
-                              span.category=moment(wishes[j].stt).format('MMM D,YY')
-                              span.category=moment(wishes[j].ddl).format('MMM D,YY')
-                            .description
-                              p=wishes[j].desc
-                          .extra.content
-                            .right.floated.author
-                              img.ui.avatar.image(src='/src/img/avatar.jpg')
-                              |  Matt
-
+                        if user
+                          a.ui.card(href='/wish/' + wishes[j]._id)
+                            .content
+                              .header=wishes[j].title
+                              .meta
+                                span.category='Expiry date: '
+                                p.category=moment(wishes[j].ddl).format('MMM D,YY')
+                              .description
+                                p='Descriptions : '+wishes[j].desc
+                            .extra.content
+                              .right.floated.author
+                                img.ui.avatar.image(src='/src/img/avatar.jpg')
+                                |  Click
+                        else
+                          .ui.card
+                            .content
+                              .header=wishes[j].title
+                              .meta
+                                span.category='Expiry date:'
+                                p.category=moment(wishes[j].ddl).format('MMM D,YY')
+                              .description
+                                p='Descriptions : '+wishes[j].desc
+                            .extra.content
+                              .right.floated.author
+                                img.ui.avatar.image(src='/src/img/avatar.jpg')
+                                |  Hi~
     script(src='./bin/js/index.js')

@@ -7,7 +7,7 @@ html
     script(src='/bin/js/bootstrap.min.js')
 
     link(href='/bin/css/list.css' rel='stylesheet')
-    script(src='./bin/js/js/list.js')
+
   body
     #modify.wrapper
       nav.navbar.navbar-default.background-self
@@ -64,5 +64,7 @@ html
                       a.ui.card(href='/user'+ usr.following[j].idCard)
                         .extra.content
                           .right.floated.author
-                            img.ui.avatar.image(src='/stylesheets/avatar.jpg')
+                            img.ui.avatar.image(src='/src/img/avatar.jpg')
                             .div(style="margin-left:20px") usr.following[j].name
+
+    script(src='/bin/js/list.js')

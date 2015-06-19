@@ -1,6 +1,7 @@
 body {
-  background-image: url(../../assets/img/user/bg.jpg);
-  background-size: cover; }
+  background-image: url(../../assets/img/bg.jpg);
+  width: 100%;
+  height: 100%; }
   body #mainbox #daohang {
     opacity: 0.85;
     overflow: auto; }
