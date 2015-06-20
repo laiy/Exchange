@@ -3,50 +3,53 @@ html
     head
         title Wish
         link(href='../lib/bootstrap/css/bootstrap.min.css', rel='stylesheet')
-        script(src='../lib/bootstrap/js/bootstrap.min.js')
         script(src='../lib/jquery.js')
+        script(src='../lib/bootstrap/js/bootstrap.min.js')
         link(href='../bin/css/wish.css' rel='stylesheet')
-        script(src='../bin/js/wish.js')
+
 
     body
-    
-        nav.navbar.nav-background.navbar-default
-            div.container-fluid
-                div.userInfo.navbar-header.navbar-left
-                    a.navbar-brand(href='/') Exchange
-    
-                ul.nav.navbar-nav.navbar-right
-                    li
-                        a.col-md-4.btn.btn-link(href='/') 首页
-                    li
-                        a.col-md-4.btn.btn-link(href='/usr/') 个人页面
-                    li
-                        a.col-md-4.btn.btn-link(href='/') 退出
+        #modify.wrapper
+            nav.navbar.nav-background.navbar-default
+                div.container-fluid
+                    div.userInfo.navbar-header.navbar-left
+                        a.navbar-brand(href='/') Exchange
+        
+                    ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href='/') 首页
+                        li
+                            a(href='/user/' + user.idCard) 我的主页
+                        li
+                            button.btn.btn-default.navbar-btn(id="log-out") 退出
 
-        div.container.well.well-lg.czy-container
+            div.container.well.well-lg.czy-container
 
-            p.title
-              a(href='/user/' + wish.uIdCard) #{wish.uIdCard}
-              span 的心愿
+                p.title
+                  a(href='/user/' + wish.uIdCard) #{wish.uIdCard}
+                  span 的心愿
 
-            div.form-group
-                label(for="title") 主题
-                input.form-control(type='text' id='title' placeholder='Title' readonly value=wish.title) 
-            div.form-group
-                - var stt = moment(wish.stt).format("YYYY-MM-DD")
-                label(for="stt") 开始时间
-                input.form-control(type='date' id='stt' placeholder='Start time' readonly value=stt) 
-            div.form-group
-                - var ddl = moment(wish.ddl).format("YYYY-MM-DD")
-                label(for="ddl") 结束时间
-                input.form-control.wishDdl(type='date' id='ddl' placeholder='Finish time' readonly value=ddl)
-            div.form-group
-                label(for="loc")地点
-                input.form-control(type='text' id='loc' placeholder='Location' readonly value=wish.loc)
-            div.form-group
-                label(for="desc") 描述
-                textarea.form-control.wishDesc(type='text' id='desc' placeholder='Description' rows="3" readonly value=wish.desc) #{wish.desc}
-            div.operator
-                if user
-                    button.btn.btn-success(type="none" id="dianzan") 点赞
-                    a.btn.btn-success(href='/invite/'+wish._id) 私信
+                div.form-group
+                    label(for="title") 主题
+                    input.form-control(type='text' id='title' placeholder='Title' readonly value=wish.title) 
+                div.form-group
+                    - var stt = moment(wish.stt).format("YYYY-MM-DD")
+                    label(for="stt") 开始时间
+                    input.form-control(type='date' id='stt' placeholder='Start time' readonly value=stt) 
+                div.form-group
+                    - var ddl = moment(wish.ddl).format("YYYY-MM-DD")
+                    label(for="ddl") 结束时间
+                    input.form-control.wishDdl(type='date' id='ddl' placeholder='Finish time' readonly value=ddl)
+                div.form-group
+                    label(for="loc")地点
+                    input.form-control(type='text' id='loc' placeholder='Location' readonly value=wish.loc)
+                div.form-group
+                    label(for="desc") 描述
+                    textarea.form-control.wishDesc(type='text' id='desc' placeholder='Description' rows="3" readonly value=wish.desc) #{wish.desc}
+                div.operator
+                    if user
+                        button.btn.btn-success(type="none" id="dianzan") 点赞
+                        a.btn.btn-success(href='/invite/'+wish._id) 私信
+
+        script(src='../bin/js/wish.js')
+            

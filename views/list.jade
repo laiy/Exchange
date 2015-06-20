@@ -7,61 +7,64 @@ html
     script(src='/bin/js/bootstrap.min.js')
 
     link(href='/bin/css/list.css' rel='stylesheet')
-    script(src='./bin/js/js/list.js')
+
   body
-     nav.navbar.navbar-default.background-self
-      .container-fluid
-          // Brand and toggle get grouped for better mobile display
-          .navbar-header
-            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-              span.sr-only Toggle navigation
-              |         
-              span.icon-bar
-              |         
-              span.icon-bar
-              |         
-              span.icon-bar
-            |       
-            a.navbar-brand(href='/') Exchange
-              span.zyh  关注列表
+    #modify.wrapper
+      nav.navbar.navbar-default.background-self
+        .container-fluid
+            // Brand and toggle get grouped for better mobile display
+            .navbar-header
+              button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                span.sr-only Toggle navigation
+                |         
+                span.icon-bar
+                |         
+                span.icon-bar
+                |         
+                span.icon-bar
+              |       
+              a.navbar-brand(href='/') Exchange
+                span.zyh  关注列表
 
-          // Collect the nav links, forms, and other content for toggling
-          #bs-example-navbar-collapse-1.collapse.navbar-collapse
-            ul.nav.navbar-nav
-              button.btn.btn-default.fan(type="button") 粉丝列表
-              button.btn.btn-default.fol(type="button") 关注列表
-            if user 
-             ul.nav.navbar-nav.navbar-right
-               li
-                 a(href='/') 首页
-               |         
-               li
-                 a(href='/user'+user.idCard) 我的主页
+            // Collect the nav links, forms, and other content for toggling
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+                button.btn.btn-default.fan(type="button") 粉丝列表
+                button.btn.btn-default.fol(type="button") 关注列表
+              if user 
+               ul.nav.navbar-nav.navbar-right
+                 li
+                   a(href='/') 首页
+                 |         
+                 li
+                   a(href='/user/'+user.idCard) 我的主页
 
-    div.center-block.fans
-      if usr
-        div(style="margin:50px")
-          div.wrapper-self
-            - for (var i=0; i < usr.fans.length; i=j)
-              div.cjs-row
-                - for (var j = i; j < usr.fans.length && j < i+5; j++)
-                  div.cjs-cell
-                    a.ui.card(href='/user' + usr.fans[j].idCard)
-                      .extra.content
-                        .right.floated.author
-                          img.ui.avatar.image(src='/src/img/avatar.jpg')
-                          .div(style="margin-left:20px") usr.fans[j].name
+      div.center-block.fans
+        if usr
+          div(style="margin:50px")
+            div.wrapper-self
+              - for (var i=0; i < usr.fans.length; i=j)
+                div.cjs-row
+                  - for (var j = i; j < usr.fans.length && j < i+5; j++)
+                    div.cjs-cell
+                      a.ui.card(href='/user/' + usr.fans[j].idCard)
+                        .extra.content
+                          .right.floated.author
+                            img.ui.avatar.image(src='/src/img/avatar.jpg')
+                            .div(style="margin-left:20px")=usr.fans[j].idCard
 
-    div.center-block.following(style="display:none")
-      if usr
-        div(style="margin:50px")
-          div.wrapper-self
-            - for (var i=0; i < usr.following.length; i=j)
-              div.cjs-row
-                - for (var j = i; j < usr.following.length && j < i+5; j++)
-                  div.cjs-cell
-                    a.ui.card(href='/user'+ usr.following[j].idCard)
-                      .extra.content
-                        .right.floated.author
-                          img.ui.avatar.image(src='/stylesheets/avatar.jpg')
-                          .div(style="margin-left:20px") usr.following[j].name
+      div.center-block.following(style="display:none")
+        if usr
+          div(style="margin:50px")
+            div.wrapper-self
+              - for (var i=0; i < usr.following.length; i=j)
+                div.cjs-row
+                  - for (var j = i; j < usr.following.length && j < i+5; j++)
+                    div.cjs-cell
+                      a.ui.card(href='/user'+ usr.following[j].idCard)
+                        .extra.content
+                          .right.floated.author
+                            img.ui.avatar.image(src='/src/img/avatar.jpg')
+                            .div(style="margin-left:20px") usr.following[j].name
+
+    script(src='/bin/js/list.js')
