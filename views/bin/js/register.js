@@ -11,7 +11,8 @@
     return yy.done(function(data) {
       if (data.result) {
         if (data.result === 'success') {
-          return window.location.replace("/");
+          alert("success");
+          return window.location.replace("/log");
         } else if (data.result === 'fail') {
           return alert(data.msg);
         }
