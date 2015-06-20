@@ -1,6 +1,6 @@
 doctype html
 html
-  he
+  head
     title Exchange
     link(href='/bin/css/bootstrap.min.css', rel='stylesheet')
     script(src='/bin/js/jquery-2.1.4.min.js')
@@ -63,7 +63,7 @@ html
           if wishes
             div(style="margin:50px")
               div.wrapper-self
-                - for (var i=0; i< 6; i=j)
+                - for (var i=0; i< wishes.length; i=j)
                   div.cjs-row
                     - for (var j = i; j < wishes.length && j < i+3; j++)
                       div.cjs-cell

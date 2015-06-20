@@ -22,7 +22,6 @@ router.post '/', (req, res)->
     console.log loc
     console.log email
     UserModel.findOne {idCard: idCard}, (err, user)->
-        console.log user
         if user
             return res.json {result: 'fail', msg: 'Idcard has already existed.'}
         else if not /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/.test(idCard)

@@ -11,7 +11,6 @@ router.get '/', (req, res)->
         if err
             res.status(500).send "Server Error"
         else
-            console.log wishes
             res.render 'index', wishes: wishes
 
 module.exports = router

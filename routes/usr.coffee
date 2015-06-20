@@ -18,7 +18,7 @@ router.get '/:id', (req, res)->
         else
             isFan = false
             for fan in user.fans
-                if fan is req.session.user._id
+                if fan.toString() is req.session.user._id
                     isFan = true
             InviteModel.find {wishOwner: user._id, stat: 'Waiting'}, (err, invites)->
                 res.render 'usr', usr: user, isFan: isFan, invites: invites
@@ -33,11 +33,9 @@ router.post '/', (req, res)->
         else
             if op is 'fo'
                 UserModel.fo req.session.user._id, user._id, ->
-                    console.log 'fo'
                     res.json {result: 'success'}
             else
-                UserModel.unfo req.seesion.user._id, user._id, ->
-                    console.log 'unfo'
+                UserModel.unfo req.session.user._id, user._id, ->
                     res.json {result: 'success'}
 
 module.exports = router

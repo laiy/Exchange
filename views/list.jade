@@ -40,31 +40,31 @@ html
                    a(href='/user/'+user.idCard) 我的主页
 
       div.center-block.fans
-        if usr
+        if fans
           div(style="margin:50px")
             div.wrapper-self
-              - for (var i=0; i < usr.fans.length; i=j)
+              - for (var i=0; i < fans.length; i=j)
                 div.cjs-row
-                  - for (var j = i; j < usr.fans.length && j < i+5; j++)
+                  - for (var j = i; j < fans.length && j < i+5; j++)
                     div.cjs-cell
-                      a.ui.card(href='/user/' + usr.fans[j].idCard)
+                      a.ui.card(href='/user/' + fans[j].idCard)
                         .extra.content
                           .right.floated.author
                             img.ui.avatar.image(src='/src/img/avatar.jpg')
-                            .div(style="margin-left:20px")=usr.fans[j].idCard
+                            .div(style="margin-left:20px")=fans[j].idCard
 
       div.center-block.following(style="display:none")
-        if usr
+        if followings
           div(style="margin:50px")
             div.wrapper-self
-              - for (var i=0; i < usr.following.length; i=j)
+              - for (var i=0; i < followings.length; i=j)
                 div.cjs-row
-                  - for (var j = i; j < usr.following.length && j < i+5; j++)
+                  - for (var j = i; j < followings.length && j < i+5; j++)
                     div.cjs-cell
-                      a.ui.card(href='/user'+ usr.following[j].idCard)
+                      a.ui.card(href='/user'+ followings[j].idCard)
                         .extra.content
                           .right.floated.author
                             img.ui.avatar.image(src='/src/img/avatar.jpg')
-                            .div(style="margin-left:20px") usr.following[j].name
+                            .div(style="margin-left:20px")=followings[j].idCard
 
     script(src='/bin/js/list.js')
